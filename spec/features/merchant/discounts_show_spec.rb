@@ -23,8 +23,11 @@ RSpec.describe "As a visitor" do
   it "discount names are links to their show pages" do
     expect(page).to have_link(@discount_2.name)
     click_link "#{@discount_1.name}"
+
+    expect(page).to have_content("Discount for: #{@blockbuster.name}")
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}")
     expect(page).to have_content(@discount_1.name)
+    
     expect(page).to have_content("Description: #{@discount_1.description}")
     expect(page).to have_content("Minimum Item Quantity: #{@discount_1.min_quantity}")
     expect(page).to have_content("Maximum Item Quantity: #{@discount_1.max_quantity}")
