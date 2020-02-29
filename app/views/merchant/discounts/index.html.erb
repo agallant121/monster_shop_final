@@ -1,0 +1,5 @@
+<% @discounts.each do |discount| %>
+  <section id='discount-<%= discount.id %>'>
+    <%= link_to discount.name, "/merchant/discounts/#{discount.id}" %>
+  </section>
+<% end %>
