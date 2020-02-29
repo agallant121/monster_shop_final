@@ -6,8 +6,8 @@ RSpec.describe "As a visitor" do
     @dave = @blockbuster.users.create!(name: "Dave Chappelle", address: "571 Cheater St",
       city: "Colorado Springs", state: "CO", zip: "80206", email: "dave@gmail.com", password: "dave", role: 2)
 
-    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, max_quantity: 19)
-    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, max_quantity: 100)
+    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, max_quantity: 19, percent: 10)
+    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, max_quantity: 100, percent: 20)
 
     visit '/login'
     expect(current_path).to eq('/login')
@@ -17,7 +17,6 @@ RSpec.describe "As a visitor" do
     click_button 'Log In'
 
     click_link "Merchant Dashboard"
-    visit "/merchant"
     # save_and_open_page
   end
 
