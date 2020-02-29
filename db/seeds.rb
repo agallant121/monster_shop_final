@@ -9,17 +9,17 @@ Merchant.destroy_all
 Item.destroy_all
 
 #Admin user to login with
-admin = User.create!(name: "Bill Gates", street_address: "953 Wealth Blvd",
+admin = User.create!(name: "Bill Gates", address: "953 Wealth Blvd",
   city: "Seattle", state: "WA", zip: "54874", email: "admin@gmail.com", password: "admin", role: 3)
 
-bill_nye = User.create!(name: "Bill Nye", street_address: "6578 Pennsylvania St NW",
+bill_nye = User.create!(name: "Bill Nye", address: "6578 Pennsylvania St NW",
                           city: "Los Angeles", state: "CA", zip: "90036", email: "regular@gmail.com", password: "regular", role: 1)
 
 
 
 bike_shop = Merchant.create!(name: 'Flat Tire', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
 #bike_shop employee
-lance = bike_shop.users.create!(name: "Lance Armstrong", street_address: "571 Cheater St",
+lance = bike_shop.users.create!(name: "Lance Armstrong", address: "571 Cheater St",
   city: "Colorado Springs", state: "CO", zip: "80206", email: "lance@gmail.com", password: "lance", role: 2)
 #bike_shop items
 ogre = bike_shop.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
@@ -34,7 +34,7 @@ cranks = bike_shop.items.create(name: "carbon cranks ", description: "LIGHT", pr
 
 dog_shop = Merchant.create!(name: 'Brians Bagels', address: '125 Main St', city: 'Denver', state: 'CO', zip: 80218)
 #dog_shop employee
-abby = dog_shop.users.create!(name: "Abby Gallant", street_address: "678 Dog Lover St",
+abby = dog_shop.users.create!(name: "Abby Gallant", address: "678 Dog Lover St",
   city: "Yarmouth", state: "ME", zip: "04240", email: "abby@gmail.com", password: "abby", role: 2)
 #dog_shop items
 hippo = dog_shop.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20)
