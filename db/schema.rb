@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20190724161751) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
+    t.integer "role", default: 1
     t.bigint "merchant_id"
     t.index ["merchant_id"], name: "index_users_on_merchant_id"
   end
