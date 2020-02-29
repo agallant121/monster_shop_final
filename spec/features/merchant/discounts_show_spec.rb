@@ -17,20 +17,17 @@ RSpec.describe "As a visitor" do
     click_button 'Log In'
 
     click_link "Merchant Dashboard"
-    # save_and_open_page
+    click_link "Discounts"
   end
 
-  it "has a link to the discounts index page" do
-
-  click_link "Discounts"
-  expect(current_path).to eq("/merchant/discounts")
-
-    within"#discount-#{@discount_1.id}" do
-      expect(page).to have_link(@discount_1.name)
-    end
-
-    within"#discount-#{@discount_2.id}" do
-      expect(page).to have_link(@discount_2.name)
-    end
+  it "discount names are links to their show pages" do
+    expect(page).to have_link(@discount_2.name)
+    click_link "#{@discount_1.name}"
+    expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}")
+    expect(page).to have_content(@discount_1.name)
+    expect(page).to have_content("Description: #{@discount_1.description}")
+    expect(page).to have_content("Minimum Item Quantity: #{@discount_1.min_quantity}")
+    expect(page).to have_content("Maximum Item Quantity: #{@discount_1.max_quantity}")
+    expect(page).to have_content("Discount Percentage: #{@discount_1.percent}")
   end
 end
