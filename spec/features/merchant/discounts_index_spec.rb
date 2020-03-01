@@ -70,4 +70,17 @@ RSpec.describe "As a visitor" do
     expect(current_path).to eq("/merchant/discounts/new")
     expect(page).to have_content("Max quantity can't be blank")
   end
+
+  it "has a link to delete the discount next to each discount on the index page" do
+    click_link "Discounts"
+    expect(current_path).to eq("/merchant/discounts")
+    expect(Discount.all.count).to eq(2)
+    
+    within"#discount-#{@discount_1.id}" do
+      click_link "Delete"
+    end
+    expect(current_path).to eq("/merchant/discounts")
+    expect(page).to_not have_content(@discount_1.name)
+    expect(Discount.all.count).to eq(1)
+  end
 end
