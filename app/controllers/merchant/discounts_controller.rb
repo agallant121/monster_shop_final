@@ -4,7 +4,7 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def show
-    @discount = Discount.find(params[:discount_id])
+    discount_for_view_pages
   end
 
   def new
@@ -15,7 +15,7 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def edit
-    @discount = Discount.find(params[:discount_id])
+    discount_for_view_pages
   end
 
   def update
@@ -23,7 +23,7 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def destroy
-    merchant
+    # merchant
     discount = Discount.find(params[:discount_id])
     discount.destroy
     redirect_to "/merchant/discounts"
@@ -82,6 +82,10 @@ class Merchant::DiscountsController < Merchant::BaseController
       redirect_to "/merchant/discounts/#{discount.id}/edit"
       #add helper methods in the morning
     end
+  end
+
+  def discount_for_view_pages
+    @discount = Discount.find(params[:discount_id])
   end
 
   # def discount_update_or_not
