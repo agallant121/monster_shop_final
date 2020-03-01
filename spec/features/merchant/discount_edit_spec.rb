@@ -31,6 +31,7 @@ RSpec.describe "As a visitor" do
     click_on "Update"
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}")
     expect(page).to have_content("Edited Discount")
+    expect(page).to_not have_content("Ten Percent")
   end
 
   it "must have all fields complete to edit a form" do
