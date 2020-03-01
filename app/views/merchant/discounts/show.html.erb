@@ -1,4 +1,6 @@
 <h1>Discount: <%= @discount.name %></h1>
+<p><%= link_to "Edit", "/merchant/discounts/#{@discount.id}/edit" %></p>
+
 <h2>Discount for: <%= @discount.merchant.name %></h2>
 
 <h3>Description: <%= @discount.description %></h3>
