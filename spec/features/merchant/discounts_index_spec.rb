@@ -17,7 +17,7 @@ RSpec.describe "As a visitor" do
     click_button 'Log In'
 
     click_link "Merchant Dashboard"
-    # save_and_open_page
+    expect(current_path).to eq("/merchant")
   end
 
   it "has a link to the discounts index page" do
@@ -32,5 +32,42 @@ RSpec.describe "As a visitor" do
     within"#discount-#{@discount_2.id}" do
       expect(page).to have_link(@discount_2.name)
     end
+  end
+
+  it "has a link to add a new discount from merchant discounts index page" do
+    click_link "Discounts"
+    expect(current_path).to eq("/merchant/discounts")
+
+    click_link "Add Discount:"
+    expect(current_path).to eq("/merchant/discounts/new")
+
+    fill_in :name, with: "New Discount"
+    fill_in :description, with: "Newest discount available"
+    fill_in :min_quantity, with: 5
+    fill_in :max_quantity, with: 9
+    fill_in :percent, with: 50
+    click_button "Submit"
+
+    expect(current_path).to eq("/merchant/discounts")
+    expect(page).to have_content("New Discount")
+    expect(page).to have_content("Your discount has been added.")
+  end
+
+  it "must have all information filled out to add discount" do
+    click_link "Discounts"
+    expect(current_path).to eq("/merchant/discounts")
+
+    click_link "Add Discount:"
+    expect(current_path).to eq("/merchant/discounts/new")
+
+    fill_in :name, with: "New Discount"
+    fill_in :description, with: "Newest discount available"
+    fill_in :min_quantity, with: 5
+    fill_in :max_quantity, with: ""
+    fill_in :percent, with: 50
+    click_button "Submit"
+
+    expect(current_path).to eq("/merchant/discounts/new")
+    expect(page).to have_content("Max quantity can't be blank")
   end
 end
