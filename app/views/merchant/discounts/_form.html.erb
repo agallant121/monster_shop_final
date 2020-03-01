@@ -1,0 +1,18 @@
+<%= form_tag path, method: :method do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @discount ? @discount.name : "" %>
+
+  <%= label_tag :description %>
+  <%= text_field_tag :description, @discount ? @discount.description : "" %>
+
+  <%= label_tag :min_quantity %>
+  <%= text_field_tag :min_quantity, @discount ? @discount.min_quantity : "" %>
+
+  <%= label_tag :max_quantity %>
+  <%= text_field_tag :max_quantity, @discount ? @discount.max_quantity : "" %>
+
+  <%= label_tag :percent %>
+  <%= text_field_tag :percent, @discount ? @discount.percent : "" %>
+
+  <%= submit_tag button_text %>
+<% end %>

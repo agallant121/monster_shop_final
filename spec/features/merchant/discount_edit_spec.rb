@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "As a visitor" do
   before :each do
+    Merchant.destroy_all
+    Discount.destroy_all
+    
     @blockbuster = Merchant.create!(name: 'Blockbuster', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218, enabled: true)
     @dave = @blockbuster.users.create!(name: "Dave Chappelle", address: "571 Cheater St",
       city: "Colorado Springs", state: "CO", zip: "80206", email: "dave@gmail.com", password: "dave", role: 2)
@@ -31,6 +34,7 @@ RSpec.describe "As a visitor" do
     click_on "Update"
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}")
     expect(page).to have_content("Edited Discount")
+    expect(page).to_not have_content("Ten Percent")
   end
 
   it "must have all fields complete to edit a form" do
