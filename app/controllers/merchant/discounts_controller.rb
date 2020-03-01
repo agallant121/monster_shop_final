@@ -19,16 +19,7 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def update
-    merchant
-    discount = Discount.find(params[:discount_id])
-    if discount.update(discount_params)
-      flash[:notice] = "Your discount changes have been saved."
-      redirect_to "/merchant/discounts/#{discount.id}"
-    else
-      flash[:notice] = "Your discount changes have not been saved."
-      redirect_to "/merchant/discounts/#{discount.id}/edit"
-      #add helper methods in the morning
-    end
+    update_discount
   end
 
   private
@@ -72,4 +63,28 @@ class Merchant::DiscountsController < Merchant::BaseController
     merchant
     discount = merchant.discounts.create(discount_params)
   end
+
+  def update_discount
+    merchant
+    discount = Discount.find(params[:discount_id])
+    if discount.update(discount_params)
+      flash[:notice] = "Your discount changes have been saved."
+      redirect_to "/merchant/discounts/#{discount.id}"
+    else
+      flash[:notice] = "Your discount changes have not been saved."
+      redirect_to "/merchant/discounts/#{discount.id}/edit"
+      #add helper methods in the morning
+    end
+  end
+
+  # def discount_update_or_not
+  #   if discount.update(discount_params)
+  #     flash[:notice] = "Your discount changes have been saved."
+  #     redirect_to "/merchant/discounts/#{discount.id}"
+  #   else
+  #     flash[:notice] = "Your discount changes have not been saved."
+  #     redirect_to "/merchant/discounts/#{discount.id}/edit"
+  #     #add helper methods in the morning
+  #   end
+  # end
 end
