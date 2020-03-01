@@ -43,4 +43,16 @@ class Cart
   def limit_reached?(item_id)
     count_of(item_id) == Item.find(item_id).inventory
   end
+
+  def discounted_total
+    self.contents.sum do |item_id,quantity|
+      item = Item.find(item_id)
+      discount_info = Discount.where(merchant_id: item.merchant_id).where("min_quantity <= #{quantity}").order("percent DESC").limit(1)
+      if discount_info.length > 0
+        ((item.price * (1 - (discount_info[0].percent.to_f/100))) * quantity).round(2)
+      else
+        item.price * quantity
+      end
+    end
+  end
 end
