@@ -87,15 +87,4 @@ class Merchant::DiscountsController < Merchant::BaseController
   def discount_for_view_pages
     @discount = Discount.find(params[:discount_id])
   end
-
-  # def discount_update_or_not
-  #   if discount.update(discount_params)
-  #     flash[:notice] = "Your discount changes have been saved."
-  #     redirect_to "/merchant/discounts/#{discount.id}"
-  #   else
-  #     flash[:notice] = "Your discount changes have not been saved."
-  #     redirect_to "/merchant/discounts/#{discount.id}/edit"
-  #     #add helper methods in the morning
-  #   end
-  # end
 end
