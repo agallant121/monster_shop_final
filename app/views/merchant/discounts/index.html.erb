@@ -2,7 +2,9 @@
 <%= link_to "Add Discount:", "/merchant/discounts/new" %><br>
 <% @discounts.each do |discount| %>
   <section id='discount-<%= discount.id %>'>
-    <h3><%= link_to discount.name, "/merchant/discounts/#{discount.id}" %></h3>
-    <p><%= link_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %></p>
+    <% if current_user.merchant.id == discount.merchant.id || current_admin? %>
+      <h3><%= link_to discount.name, "/merchant/discounts/#{discount.id}" %></h3>
+      <p><%= link_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %></p>
+    <% end %>
   </section>
 <% end %>
