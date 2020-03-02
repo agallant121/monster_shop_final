@@ -36,15 +36,8 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def create_discount
-    merchant
-    discount
-    save_or_not_save_discount
-  end
-
-  def save_or_not_save_discount
-    merchant
-    discount
-    if discount.save
+    @discount = discount
+    if @discount.save
       saved_discount
     else
       discount_not_saved
@@ -58,7 +51,7 @@ class Merchant::DiscountsController < Merchant::BaseController
 
   def discount_not_saved
     merchant
-    flash[:notice] = discount.errors.full_messages.to_sentence
+    flash[:notice] = @discount.errors.full_messages.to_sentence
     redirect_to "/merchant/discounts/new"
   end
 
@@ -68,7 +61,7 @@ class Merchant::DiscountsController < Merchant::BaseController
 
   def discount
     merchant
-    discount = merchant.discounts.create(discount_params)
+    discount = merchant.discounts.new(discount_params)
   end
 
   def update_discount
