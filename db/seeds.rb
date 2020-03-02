@@ -16,15 +16,23 @@ bill_nye = User.create!(name: "Bill Nye", address: "6578 Pennsylvania St NW",
                           city: "Los Angeles", state: "CA", zip: "90036", email: "regular@gmail.com", password: "regular", role: 1)
 
 
+car_shop = Merchant.create!(name: 'Car Shop', address: '9856 Drive St', city: 'Los Angeles', state: 'CO', zip: 90036)
+wheel = car_shop.items.create!(name: 'Wheel', description: "I'm an wheel!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
+windshield = car_shop.items.create!(name: 'Windshield', description: "I'm a windshield!", price: 100, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
+seat = car_shop.items.create(name: "Seat", description: "They're comfy!", price: 200, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", active: true, inventory: 20)
+#car_shop employee
+jeff = car_shop.users.create!(name: "Jeff Gordon", address: "571 Nascar St",
+  city: "Taladega", state: "TN", zip: "85478", email: "jeff@gmail.com", password: "jeff", role: 2)
+
 
 bike_shop = Merchant.create!(name: 'Flat Tire', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
 
 discount_1 = bike_shop.discounts.create!(name: "Test_1 Discount", description: "Great bulk discount", min_quantity: 5, max_quantity: 9, percent: 10)
 discount_2 = bike_shop.discounts.create!(name: "Test_2 Discount", description: "Greater bulk discount", min_quantity: 10, max_quantity: 100, percent: 20)
-
 #bike_shop employee
 lance = bike_shop.users.create!(name: "Lance Armstrong", address: "571 Cheater St",
   city: "Colorado Springs", state: "CO", zip: "80206", email: "lance@gmail.com", password: "lance", role: 2)
+
 #bike_shop items
 ogre = bike_shop.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
 giant = bike_shop.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
