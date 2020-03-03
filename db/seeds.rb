@@ -27,8 +27,8 @@ jeff = car_shop.users.create!(name: "Jeff Gordon", address: "571 Nascar St",
 
 bike_shop = Merchant.create!(name: 'Flat Tire', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
 
-discount_1 = bike_shop.discounts.create!(name: "Test_1 Discount", description: "Great bulk discount", min_quantity: 5, max_quantity: 9, percent: 10)
-discount_2 = bike_shop.discounts.create!(name: "Test_2 Discount", description: "Greater bulk discount", min_quantity: 10, max_quantity: 100, percent: 20)
+discount_1 = bike_shop.discounts.create!(name: "Test_1 Discount", description: "Great bulk discount", min_quantity: 5, percent: 10)
+discount_2 = bike_shop.discounts.create!(name: "Test_2 Discount", description: "Greater bulk discount", min_quantity: 10, percent: 20)
 #bike_shop employee
 lance = bike_shop.users.create!(name: "Lance Armstrong", address: "571 Cheater St",
   city: "Colorado Springs", state: "CO", zip: "80206", email: "lance@gmail.com", password: "lance", role: 2)
@@ -46,8 +46,8 @@ cranks = bike_shop.items.create(name: "carbon cranks ", description: "LIGHT", pr
 
 dog_shop = Merchant.create!(name: 'Brians Bagels', address: '125 Main St', city: 'Denver', state: 'CO', zip: 80218)
 
-discount_3 = dog_shop.discounts.create!(name: "Test_3 Discount", description: "Dog Shop bulk discount", min_quantity: 5, max_quantity: 9, percent: 10)
-discount_4 = dog_shop.discounts.create!(name: "Test_4 Discount", description: "Bigger Dog Shop bulk discount", min_quantity: 10, max_quantity: 100, percent: 20)
+discount_3 = dog_shop.discounts.create!(name: "Test_3 Discount", description: "Dog Shop bulk discount", min_quantity: 5, percent: 10)
+discount_4 = dog_shop.discounts.create!(name: "Test_4 Discount", description: "Bigger Dog Shop bulk discount", min_quantity: 10, percent: 20)
 
 #dog_shop employee
 abby = dog_shop.users.create!(name: "Abby Gallant", address: "678 Dog Lover St",
