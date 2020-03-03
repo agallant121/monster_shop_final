@@ -27,7 +27,6 @@ RSpec.describe "As a visitor" do
   end
 
   it "has a link to edit the discount on the discount's show page" do
-    expect(page).to_not have_content("Test Discount")
 
     click_link "#{@discount_1.name}"
     click_link "Edit"
@@ -51,5 +50,11 @@ RSpec.describe "As a visitor" do
     click_on "Update"
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
     expect(page).to have_content("Your discount changes have not been saved.")
+  end
+
+  it "only shows discounts associated with logged in merchant" do
+    expect(page).to have_content("Fifteen Percent")
+    expect(page).to have_content("Ten Percent")
+    expect(page).to_not have_content("Test Discount")
   end
 end
