@@ -4,13 +4,15 @@ RSpec.describe "As a visitor" do
   before :each do
     Merchant.destroy_all
     Discount.destroy_all
-    
+
+    @front_row_video = Merchant.create!(name: 'Front Row Video', address: '874 New Hampshire Blvd', city: 'Bangor', state: 'PA', zip: 80218, enabled: true)
     @blockbuster = Merchant.create!(name: 'Blockbuster', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218, enabled: true)
     @dave = @blockbuster.users.create!(name: "Dave Chappelle", address: "571 Cheater St",
       city: "Colorado Springs", state: "CO", zip: "80206", email: "dave@gmail.com", password: "dave", role: 2)
 
-    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, max_quantity: 19, percent: 10)
-    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, max_quantity: 100, percent: 20)
+    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, percent: 10)
+    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, percent: 20)
+    @discount_ = @front_row_video.discounts.create(name: "Test Discount", description: "Competitor's Discount", min_quantity: 20, percent: 50)
 
     visit '/login'
     expect(current_path).to eq('/login')
@@ -25,6 +27,8 @@ RSpec.describe "As a visitor" do
   end
 
   it "has a link to edit the discount on the discount's show page" do
+    expect(page).to_not have_content("Test Discount")
+
     click_link "#{@discount_1.name}"
     click_link "Edit"
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
