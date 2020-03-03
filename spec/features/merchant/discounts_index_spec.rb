@@ -44,7 +44,6 @@ RSpec.describe "As a visitor" do
     fill_in :name, with: "New Discount"
     fill_in :description, with: "Newest discount available"
     fill_in :min_quantity, with: 5
-    # fill_in :max_quantity, with: 9
     fill_in :percent, with: 50
     click_button "Submit"
 
