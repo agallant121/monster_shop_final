@@ -33,9 +33,19 @@ RSpec.describe "As a visitor" do
 
     within"#item-#{@ogre.id}" do
       click_button 'More of This!'
+    end
+    expect(page).to_not have_content("Discounted Total:")
+
+    within"#item-#{@ogre.id}" do
       click_button 'More of This!'
     end
+    expect(page).to have_content("Total: $30.00")
     expect(page).to have_content("Discounted Total: $27.00")
+
+    within"#item-#{@ogre.id}" do
+      click_button 'Less of This!'
+    end
+    expect(page).to_not have_content("Discounted Total:")
   end
 
   it "chooses the greater discount" do
