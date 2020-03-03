@@ -17,9 +17,9 @@ bill_nye = User.create!(name: "Bill Nye", address: "6578 Pennsylvania St NW",
 
 
 car_shop = Merchant.create!(name: 'Car Shop', address: '9856 Drive St', city: 'Los Angeles', state: 'CO', zip: 90036)
-wheel = car_shop.items.create!(name: 'Wheel', description: "I'm an wheel!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
-windshield = car_shop.items.create!(name: 'Windshield', description: "I'm a windshield!", price: 100, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
-seat = car_shop.items.create(name: "Seat", description: "They're comfy!", price: 200, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", active: true, inventory: 20)
+wheel = car_shop.items.create!(name: 'Wheel', description: "I'm an wheel!", price: 50, image: 'https://images-na.ssl-images-amazon.com/images/I/817Cs2NO22L._AC_SX355_.jpg', active: true, inventory: 20 )
+windshield = car_shop.items.create!(name: 'Windshield', description: "I'm a windshield!", price: 100, image: 'https://rapidglass.com/wp-content/uploads/2014/10/windshieldReplacementSlide.jpg', active: true, inventory: 20 )
+seat = car_shop.items.create(name: "Seat", description: "They're comfy!", price: 200, image: "https://www.carcoverworld.com/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/e/n/endura-custom-seat-covers_cgt-gten_red-black_main1_1_1.jpg", active: true, inventory: 20)
 #car_shop employee
 jeff = car_shop.users.create!(name: "Jeff Gordon", address: "571 Nascar St",
   city: "Taladega", state: "TN", zip: "85478", email: "jeff@gmail.com", password: "jeff", role: 2)
