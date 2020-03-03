@@ -5,7 +5,6 @@ class CreateDiscounts < ActiveRecord::Migration[5.1]
       t.string :description
       t.references :merchant, foreign_key: true
       t.integer :min_quantity
-      t.integer :max_quantity
 
       t.timestamps
     end
