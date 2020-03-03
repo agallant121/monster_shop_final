@@ -32,18 +32,6 @@ class Cart
     grand_total
   end
 
-  # def grand_total
-  #   if discounted_total == grand_total
-  #     grand_total = 0.0
-  #     @contents.each do |item_id, quantity|
-  #       grand_total += Item.find(item_id).price * quantity
-  #     end
-  #     grand_total
-  #   else
-  #     discounted_total
-  #   end
-  # end
-
   def count_of(item_id)
     @contents[item_id.to_s]
   end

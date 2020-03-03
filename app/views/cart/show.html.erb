@@ -3,7 +3,7 @@
   <p>Your Cart is Empty!</p>
 <% else %>
 <h3>Total: <%= number_to_currency(cart.grand_total) %></h3>
-<% if cart.discounted_total %>
+<% if cart.discounted_total != cart.grand_total %>
   <h3>Discounted Total: <%= number_to_currency(cart.discounted_total) %></h3>
 <% end %>
   <% cart.items.each do |item| %>

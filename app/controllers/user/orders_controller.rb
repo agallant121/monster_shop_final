@@ -11,6 +11,7 @@ class User::OrdersController < ApplicationController
 
   def create
     order = current_user.orders.new
+    # order.update(discounted_total: cart.discounted_total)
     order.save
       cart.items.each do |item|
         order.order_items.create({
