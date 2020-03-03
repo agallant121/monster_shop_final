@@ -12,7 +12,7 @@ RSpec.describe "As a visitor" do
 
     @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, percent: 10)
     @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, percent: 20)
-    @discount_ = @front_row_video.discounts.create(name: "Test Discount", description: "Competitor's Discount", min_quantity: 20, percent: 50)
+    @discount_3 = @front_row_video.discounts.create(name: "Test Discount", description: "Competitor's Discount", min_quantity: 20, percent: 50)
 
     visit '/login'
     expect(current_path).to eq('/login')
