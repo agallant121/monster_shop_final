@@ -6,8 +6,8 @@ RSpec.describe "As a visitor" do
     @dave = @blockbuster.users.create!(name: "Dave Chappelle", address: "571 Cheater St",
       city: "Colorado Springs", state: "CO", zip: "80206", email: "dave@gmail.com", password: "dave", role: 2)
 
-    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, max_quantity: 19, percent: 10)
-    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, max_quantity: 100, percent: 20)
+    @discount_1 = @blockbuster.discounts.create(name: "Ten Percent", description: "Great bulk discount", min_quantity: 10, percent: 10)
+    @discount_2 = @blockbuster.discounts.create(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 20, percent: 20)
 
     visit '/login'
     expect(current_path).to eq('/login')
@@ -44,7 +44,6 @@ RSpec.describe "As a visitor" do
     fill_in :name, with: "New Discount"
     fill_in :description, with: "Newest discount available"
     fill_in :min_quantity, with: 5
-    fill_in :max_quantity, with: 9
     fill_in :percent, with: 50
     click_button "Submit"
 
@@ -62,13 +61,12 @@ RSpec.describe "As a visitor" do
 
     fill_in :name, with: "New Discount"
     fill_in :description, with: "Newest discount available"
-    fill_in :min_quantity, with: 5
-    fill_in :max_quantity, with: ""
+    fill_in :min_quantity, with: ""
     fill_in :percent, with: 50
     click_button "Submit"
 
     expect(current_path).to eq("/merchant/discounts/new")
-    expect(page).to have_content("Max quantity can't be blank")
+    expect(page).to have_content("Min quantity can't be blank")
   end
 
   it "has a link to delete a discount next to each discount on the index page" do

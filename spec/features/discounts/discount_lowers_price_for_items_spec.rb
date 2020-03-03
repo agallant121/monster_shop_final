@@ -6,8 +6,8 @@ RSpec.describe "As a visitor" do
     @dave = @blockbuster.users.create!(name: "Dave Chappelle", address: "571 Cheater St",
       city: "Colorado Springs", state: "CO", zip: "80206", email: "dave@gmail.com", password: "dave", role: 2)
 
-    @discount_1 = @blockbuster.discounts.create!(name: "Ten Percent", description: "Great bulk discount", min_quantity: 3, max_quantity: 4, percent: 10)
-    @discount_2 = @blockbuster.discounts.create!(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 5, max_quantity: 100, percent: 20)
+    @discount_1 = @blockbuster.discounts.create!(name: "Ten Percent", description: "Great bulk discount", min_quantity: 3, percent: 10)
+    @discount_2 = @blockbuster.discounts.create!(name: "Fifteen Percent", description: "Best discount offered", min_quantity: 5, percent: 20)
 
     @ogre = @blockbuster.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 10, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
     @giant = @blockbuster.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20 )
