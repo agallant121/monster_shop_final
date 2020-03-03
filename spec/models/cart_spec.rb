@@ -41,8 +41,8 @@ RSpec.describe Cart do
                                     active: true,
                                     inventory: 10 )
 
-      @discount_1 = @megan.discounts.create!(name: "Test_1 Discount", description: "Great bulk discount", min_quantity: 3, max_quantity: 4, percent: 10)
-      @discount_2 = @megan.discounts.create!(name: "Test_2 Discount", description: "Greater bulk discount", min_quantity: 5, max_quantity: 100, percent: 20)
+      @discount_1 = @megan.discounts.create!(name: "Test_1 Discount", description: "Great bulk discount", min_quantity: 3, percent: 10)
+      @discount_2 = @megan.discounts.create!(name: "Test_2 Discount", description: "Greater bulk discount", min_quantity: 5, percent: 20)
 
       @cart = Cart.new({
         @ogre.id.to_s => 1,
