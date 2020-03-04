@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Merchant.destroy_all
 Item.destroy_all
+User.destroy_all
+Order.destroy_all
 
 #Admin user to login with
 admin = User.create!(name: "Bill Gates", address: "953 Wealth Blvd",
