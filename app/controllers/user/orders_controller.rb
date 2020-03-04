@@ -11,15 +11,15 @@ class User::OrdersController < ApplicationController
 
   def create
     order = current_user.orders.new
-    # order.update(discounted_total: cart.discounted_total)
+    order.disc_total(cart.grand_total, cart.discounted_total)
     order.save
-      cart.items.each do |item|
-        order.order_items.create({
-          item: item,
-          quantity: cart.count_of(item.id),
-          price: item.price
-          })
-      end
+    cart.items.each do |item|
+      order.order_items.create({
+        item: item,
+        quantity: cart.count_of(item.id),
+        price: item.price
+        })
+    end
     session.delete(:cart)
     flash[:notice] = "Order created successfully!"
     redirect_to '/profile/orders'
