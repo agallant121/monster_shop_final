@@ -1,15 +1,3 @@
-<%= form_tag "/merchant/discounts", method: :post do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-
-  <%= label_tag :description %>
-  <%= text_field_tag :description %>
-
-  <%= label_tag :min_quantity %>
-  <%= text_field_tag :min_quantity %>
-
-  <%= label_tag :percent %>
-  <%= text_field_tag :percent %>
-
-  <%= submit_tag "Submit" %>
-<% end %>
+<%=  render partial:"form", locals: { path: "/merchant/discounts",
+                                      method: 'post',
+                                      button_text: "Submit"} %>
