@@ -42,4 +42,10 @@ class Order < ApplicationRecord
   def self.by_status
     order(:status)
   end
+
+  def disc_total(total, discount)
+    if total != discount
+      self.update(discounted_total: discount)
+    end
+  end
 end
