@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   delete '/cart/:item_id', to: 'cart#remove_item'
 
   get '/registration', to: 'users#new', as: :registration
-  resources :users, only: [:create, :update]
-  patch '/user/:id', to: 'users#update'
+  resources :users, only: [:create, :update, :edit, :show]
+
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
   get '/profile/edit_password', to: 'users#edit_password'
@@ -34,17 +34,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
 
   namespace :merchant do
-
     get '/', to: 'dashboard#index', as: :dashboard
-    get '/discounts', to: 'discounts#index'
-    get '/discounts/new', to: 'discounts#new'
-    post '/discounts', to: 'discounts#create'
-    get '/discounts/:discount_id', to: 'discounts#show'
-    get '/discounts/:discount_id/edit', to: 'discounts#edit'
-    patch '/discounts/:discount_id', to: 'discounts#update'
-    delete '/discounts/:discount_id', to: 'discounts#destroy'
-    resources :orders, only: :show
-    resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :discounts
+    resources :orders, only: [:show]
+    resources :items, except: [:show]
     put '/items/:id/change_status', to: 'items#change_status'
     get '/orders/:id/fulfill/:order_item_id', to: 'orders#fulfill'
   end
